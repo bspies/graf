@@ -1,4 +1,4 @@
-package org.graf.traversal;
+package org.graf.traversal.events;
 
 import org.graf.Edge;
 
@@ -9,7 +9,8 @@ import org.graf.Edge;
  */
 public interface EdgeListener<V, E extends Edge<V>> {
     /**
-     * A listener to an edge traversal.
+     * A listener to an edge traversal. This method
+     * is invoked before the target node is visited.
      * @param edge The edge being traversed
      */
     void onTraversal(E edge);

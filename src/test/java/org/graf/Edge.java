@@ -8,14 +8,14 @@ package org.graf;
  */
 public interface Edge<V> {
     /**
-     * Returns the source of a directed edge,or simply the
+     * Returns the source of a directed edge, or simply one
      * of the nodes of an undirected edge.
      * @return The source node
      */
     V getSource();
 
     /**
-     * Returns the target of a directed edge, or simply the
+     * Returns the target of a directed edge, or simply one
      * of the nodes of an undirected edge.
      * @return The target node
      */

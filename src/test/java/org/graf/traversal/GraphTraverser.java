@@ -12,7 +12,7 @@ public interface GraphTraverser<V, E extends Edge<V>> {
     /**
      * Traverses the graph, beginning with the starting node.
      * @param startingNode The starting node
-     * @param visitor The visitor
+     * @param visitor The node visitor
      */
     void traverse(V startingNode, NodeVisitor<V> visitor);
 }

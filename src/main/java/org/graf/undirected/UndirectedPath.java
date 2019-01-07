@@ -2,9 +2,6 @@ package org.graf.undirected;
 
 import org.graf.AbstractPath;
 import org.graf.Edge;
-import org.graf.Path;
-
-import java.util.Collection;
 
 /**
  * A path consisting of undirected edges connected in a sequential fashion.

@@ -1,31 +1,72 @@
 package org.graf;
 
 import java.util.Arrays;
-import java.util.Collection;
+import java.util.Collections;
 import java.util.Set;
+import java.util.stream.Stream;
 
+/**
+ * Abstract implementation of a {@link Graph}.
+ * @param <V> The node value type
+ * @param <E> The edge type
+ */
 public abstract class AbstractGraph<V, E extends Edge<V>> implements Graph<V,E> {
 
-    private Set<V> nodes;
-    private Set<E> edges;
+    private final Set<V> nodes;
+    private final Set<E> edges;
 
-    @Override public Collection<V> getNodes() {
-        return nodes;
+    /**
+     * Creates the graph with the initial nodes and edges.
+     * @param initialNodes The initial nodes
+     * @param initialEdges The initial edges
+     */
+    protected AbstractGraph(Set<V> initialNodes, Set<E> initialEdges) {
+        this.nodes = initialNodes;
+        this.edges = initialEdges;
     }
 
-    @Override public Collection<E> getEdges() {
-        return edges;
+    /**
+     * {@inheritDoc}
+     */
+    @Override public Set<V> getNodes() {
+        return Collections.unmodifiableSet(nodes);
     }
 
-    @Override
-    public void addNode(V node) {
-        nodes.add(node);
+    /**
+     * {@inheritDoc}
+     */
+    @Override public Set<E> getEdges() {
+        return Collections.unmodifiableSet(edges);
     }
 
-    @Override
-    public void addEdge(E edge) {
+    /**
+     * {@inheritDoc}
+     */
+    @Override public boolean addNode(V node) {
+        return nodes.add(node);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override public boolean addNodes(V... nodes) {
+        return Collections.addAll(this.nodes, nodes);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override public boolean addEdge(E edge) {
         addIfAbsent(edge.getSource(), edge.getTarget());
-        edges.add(edge);
+        return edges.add(edge);
+    }
+
+    @Override public boolean addEdges(E... edges) {
+        boolean changed = false;
+        for (E e : edges) {
+            changed |= addEdge(e);
+        }
+        return changed;
     }
 
     private void addIfAbsent(V... nodesToAdd) {

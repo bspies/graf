@@ -1,6 +1,6 @@
 package org.graf;
 
-import java.util.Collection;
+import java.util.Set;
 
 public interface Path<V, E extends Edge<V>> {
     /**
@@ -8,13 +8,13 @@ public interface Path<V, E extends Edge<V>> {
      * path.
      * @return The path edges
      */
-    Collection<E> getEdges();
+    Set<E> getEdges();
 
     /**
      * Returns all nodes that connected by this path.
      * @return The path nodes
      */
-    Collection<V> getNodes();
+    Set<V> getNodes();
 
     /**
      * Adds an edge to the path. The edge added must maintain the sequential

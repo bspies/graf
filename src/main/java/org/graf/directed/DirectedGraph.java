@@ -3,7 +3,7 @@ package org.graf.directed;
 import org.graf.Edge;
 import org.graf.Graph;
 
-import java.util.Collection;
+import java.util.Set;
 
 /**
  * A directional graph, i.e. a graph in which all edges are directed
@@ -17,14 +17,14 @@ public interface DirectedGraph<V, E extends Edge<V>> extends Graph<V,E> {
      * @param node The source node
      * @return The outgoing edges
      */
-    Collection<E> getOutgoingEdges(V node);
+    Set<E> getOutgoingEdges(V node);
 
     /**
      * Returns all the incoming edges to a given node.
      * @param node The target node
      * @return The incoming edges
      */
-    Collection<E> getIncomingEdges(V node);
+    Set<E> getIncomingEdges(V node);
 
     /**
      * Does this graph allow cycles?

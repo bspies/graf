@@ -1,10 +1,15 @@
 package org.graf;
 
-import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+/**
+ * Base implementation of a {@link Path}.
+ * @param <V> The node value type
+ * @param <E> The edge type
+ */
 public abstract class AbstractPath<V, E extends Edge<V>> implements Path<V,E> {
 
     private final Set<E> edges = new LinkedHashSet<>();
@@ -12,20 +17,20 @@ public abstract class AbstractPath<V, E extends Edge<V>> implements Path<V,E> {
     /**
      * {@inheritDoc}
      */
-    @Override public Collection<E> getEdges() {
+    @Override public Set<E> getEdges() {
         return edges;
     }
 
     /**
      * {@inheritDoc}
      */
-    @Override public Collection<V> getNodes() {
+    @Override public Set<V> getNodes() {
         Set<V> nodes = new HashSet<>();
         getEdges().forEach(e -> {
             nodes.add(e.getSource());
             nodes.add(e.getTarget());
         });
-        return nodes;
+        return Collections.unmodifiableSet(nodes);
     }
 
     /**
